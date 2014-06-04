@@ -16,8 +16,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Declare View variables
-        TextView answerLabel;
+        //Declare View variables and assign them to views from the activity_main.xml layout
+        TextView answerLabel = (TextView) findViewById(R.id.textView1);
         Button getAnswerButton;
     }
 
