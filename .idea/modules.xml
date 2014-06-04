@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Fortune  Orb/Fortune  Orb.iml" filepath="$PROJECT_DIR$/Fortune  Orb/Fortune  Orb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FortuneOrb.iml" filepath="$PROJECT_DIR$/FortuneOrb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FortuneOrbApp.iml" filepath="$PROJECT_DIR$/FortuneOrbApp.iml" />
+    </modules>
+  </component>
+</project>
+
