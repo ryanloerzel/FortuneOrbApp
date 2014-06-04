@@ -9,8 +9,30 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Random;
+
 
 public class MainActivity extends Activity {
+
+    //An array of available answers that will be shown in the orb
+    private String[] answers = {
+            "It is undeniable",
+            "All signs point to YES",
+            "It is certain",
+            "Without a single doubt",
+            "It is decidedly so",
+            "The stars are not aligned",
+            "Don't count on it",
+            "Very doubtful",
+            "My reply is a strong NO",
+            "The Gods are not on your side",
+            "Most certainly not",
+            "It can not be known",
+            "Better not tell you now",
+            "Meditate and ask again",
+            "The Gods frown upon such questions",
+            "What will be will be"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +47,14 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View view) {
                 //The button was clicked, so update the answer label with an answer
-                String answer = "YES";
+                String answer = "";
+
+                //Randomly select an integer to index the answers array
+                Random randomGenerator = new Random();
+                int randomNumber = randomGenerator.nextInt(answers.length);
+                answer = answers[randomNumber];
+
+                //Update the label with a dynamic answer
                 answerLabel.setText(answer);
             }
         });
