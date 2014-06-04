@@ -23,8 +23,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d921055b-a6b9-473f-b2c1-112dee46f5aa" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Fortune  Orb/src/main/java/com/spacecasestudios/fortuneorb/fortuneorb/Orb.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Fortune  Orb/src/main/java/com/spacecasestudios/fortuneorb/fortuneorb/MainActivity.java" afterPath="$PROJECT_DIR$/Fortune  Orb/src/main/java/com/spacecasestudios/fortuneorb/fortuneorb/MainActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Fortune Orb.iws" />
@@ -1168,7 +1166,11 @@
       <created>1401915967850</created>
       <updated>1401915967851</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Refactor: created an Orb class to handle message creation">
+      <created>1401917326649</created>
+      <updated>1401917326649</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -1222,7 +1224,8 @@
     </option>
     <MESSAGE value="Added a onClickListener to the getAnswerButton" />
     <MESSAGE value="Added an array of messages to be displayed by the orb" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added an array of messages to be displayed by the orb" />
+    <MESSAGE value="Refactor: created an Orb class to handle message creation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor: created an Orb class to handle message creation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
