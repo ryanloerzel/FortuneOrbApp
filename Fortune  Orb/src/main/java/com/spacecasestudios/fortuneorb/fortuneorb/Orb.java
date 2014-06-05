@@ -11,21 +11,21 @@ public class Orb {
     //An array of available mAnswers that will be shown in the orb
     private String[] mAnswers = {
             "It is undeniable",
-            "All signs point to YES",
+            "All signs point to yes",
             "It is certain",
             "Without a single doubt",
             "It is decidedly so",
             "The stars are not aligned",
             "Don't count on it",
             "Very doubtful",
-            "My reply is a strong NO",
-            "The Gods are not on your side",
+            "My reply is a strong no",
+            "The gods are not on your side",
             "Most certainly not",
             "It can not be known",
             "Better not tell you now",
             "Meditate and ask again",
-            "The Gods frown upon such questions",
-            "What will be will be"
+            "The gods frown upon such questions",
+            "What will, be will be"
     };
     private String mAnswer = "";
 
