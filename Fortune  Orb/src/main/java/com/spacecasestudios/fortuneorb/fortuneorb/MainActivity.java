@@ -1,6 +1,8 @@
 package com.spacecasestudios.fortuneorb.fortuneorb;
 
 import android.app.Activity;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,7 +17,10 @@ public class MainActivity extends Activity {
     //Member variables
     private Orb mOrb = new Orb();
     private TextView mAnswerLabel;
-    private Button mGetAnswerButton;
+    private SensorManager mSensorManager;
+    private Sensor mAccelerometer;
+    private ShakeDetector mShakeDetector;
+
 
     //Methods
     @Override
@@ -25,23 +30,42 @@ public class MainActivity extends Activity {
 
         //Assign view variables to views from the activity_main.xml layout
         mAnswerLabel = (TextView) findViewById(R.id.textView1);
-        mGetAnswerButton = (Button) findViewById(R.id.button1);
 
-        mGetAnswerButton.setOnClickListener(new View.OnClickListener() {
+        //Initialize the sensors for the accelerometer
+        mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
+        mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+
+        mShakeDetector = new ShakeDetector(new ShakeDetector.OnShakeListener() {
             @Override
-            public void onClick(View view) {
-                String answer = mOrb.getAnAnswer();
-                //Update the label with a dynamic answer
-                mAnswerLabel.setText(answer);
-
-                animateAnswer();
-                playSound();
-
+            public void onShake() {
+                handleNewAnswer();
             }
         });
     }
 
-   //Creates a fade in animation for the crystal ball text
+    @Override
+    public void onResume(){
+        super.onResume();
+        mSensorManager.registerListener(mShakeDetector, mAccelerometer,
+                SensorManager.SENSOR_DELAY_UI);
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        mSensorManager.unregisterListener(mShakeDetector);
+    }
+
+    private void handleNewAnswer() {
+        String answer = mOrb.getAnAnswer();
+        //Update the label with a dynamic answer
+        mAnswerLabel.setText(answer);
+
+        animateAnswer();
+        playSound();
+    }
+
+    //Creates a fade in animation for the crystal ball text
    private void animateAnswer(){
        //set the opacity
         AlphaAnimation fadeInAnimation = new AlphaAnimation(0, 1);
