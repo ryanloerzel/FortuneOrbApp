@@ -4,5 +4,7 @@
     <string name="app_name">Fortune Orb</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="initial_message">Ask a question, and shake your device to receive an answer.</string>
 
 </resources>

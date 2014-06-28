@@ -1,15 +1,14 @@
 package com.spacecasestudios.fortuneorb.fortuneorb;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.animation.AlphaAnimation;
-import android.widget.Button;
 import android.widget.TextView;
 
 
@@ -28,6 +27,10 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Go to the SplashScreen Activity when the app first starts
+        Intent intent = new Intent(MainActivity.this, SplashActivity.class);
+        startActivity(intent);
+
         //Assign view variables to views from the activity_main.xml layout
         mAnswerLabel = (TextView) findViewById(R.id.textView1);
 
@@ -35,10 +38,18 @@ public class MainActivity extends Activity {
         mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
         mAccelerometer = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
+        /* There is a bug causing the orb to register a shake when it first starts
+        Setting the shake count to zero and then adding an if condition is my current
+        workaround.
+         */
+        ShakeDetector.shakeCount = 0;
         mShakeDetector = new ShakeDetector(new ShakeDetector.OnShakeListener() {
             @Override
             public void onShake() {
-                handleNewAnswer();
+                if(ShakeDetector.shakeCount > 0){
+                    handleNewAnswer();
+                }
+                ShakeDetector.shakeCount++;
             }
         });
     }
@@ -48,6 +59,7 @@ public class MainActivity extends Activity {
         super.onResume();
         mSensorManager.registerListener(mShakeDetector, mAccelerometer,
                 SensorManager.SENSOR_DELAY_UI);
+        mAnswerLabel.setText(getString(R.string.initial_message));
     }
 
     @Override
@@ -60,7 +72,6 @@ public class MainActivity extends Activity {
         String answer = mOrb.getAnAnswer();
         //Update the label with a dynamic answer
         mAnswerLabel.setText(answer);
-
         animateAnswer();
         playSound();
     }
@@ -69,17 +80,11 @@ public class MainActivity extends Activity {
    private void animateAnswer(){
        //set the opacity
         AlphaAnimation fadeInAnimation = new AlphaAnimation(0, 1);
-
         fadeInAnimation.setDuration(1500);
         fadeInAnimation.setFillAfter(true);
-
-
         mAnswerLabel.clearAnimation();/*Hack to make sure the animation
                                         runs every time the button is pressed*/
-
         mAnswerLabel.setAnimation(fadeInAnimation);
-
-     
     }
 
     private void playSound(){

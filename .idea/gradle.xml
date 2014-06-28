@@ -7,8 +7,8 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
           <set>
-            <option value="C:\Users\Ryan\Development\FortuneOrbApp" />
-            <option value="C:\Users\Ryan\Development\FortuneOrbApp\Fortune  Orb" />
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Fortune  Orb" />
           </set>
         </option>
       </GradleProjectSettings>

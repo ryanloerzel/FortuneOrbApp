@@ -8,6 +8,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 
 public class ShakeDetector implements SensorEventListener {
+    public static int shakeCount = 0;
 
     // Minimum acceleration needed to count as a shake movement
     private static final int MIN_SHAKE_ACCELERATION = 5;
